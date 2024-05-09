@@ -12,11 +12,11 @@
 <body>
   <main class="main-content">
     <header class="header">
-      <h1 class="title">Login</h1>
+      <h1 class="title">Signup</h1>
       <img src="./assets/images/flower.png" alt="">
     </header>
 
-    <form class="form login-form">
+    <form class="form signup-form">
       <div class="input-field">
         <label for="username">Username</label>
         <input type="text" id="username" required placeholder="Ex. Fernando">
@@ -27,7 +27,12 @@
         <input type="password" id="password" required>
       </div>
 
-      <button type="submit" id="login">Log in</button>
+      <div class="input-field">
+        <label for="password-repeat">Repeat password</label>
+        <input type="password" id="password-repeat" required>
+      </div>
+
+      <button type="submit" id="signup">Sign up</button>
     </form>
   </main>
 </body>
