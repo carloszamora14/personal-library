@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./css/style.css">
+  <link rel="stylesheet" href="./css/normalize.css">
+  <title>Personal Library</title>
+</head>
+
+<body>
+  <main>
+    <div class="process-auth">
+      <div class="header-login">
+        <h1 class="login-title">LOGIN</h1>
+        <img src="./assets/images/flower.png" alt="">
+      </div>
+      <form id="loginForm">
+
+        <div class="inputs-form">
+          <label for="username">Username</label>
+          <input type="text" id="username" required placeholder="Ej. Fernando">
+        </div>
+
+        <div class="inputs-form">
+          <label for="password">Constraseña</label>
+          <input type="password" id="password" required>
+        </div>
+
+        <button class="btn-login" type="submit" id="login">Iniciar Sesión</button>
+      </form>
+    </div>
+
+    <div id="userVerify"></div>
+    <hr id="hide-div-hr">
+    <div id="result"></div>
+  </main>
+</body>
+
+</html>
