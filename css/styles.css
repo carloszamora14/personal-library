@@ -1,0 +1,121 @@
+:root {
+  --color-body: #ffb3c1;
+  --color-title-button: #a4133c;
+  --color-text: #590d22;
+  --color-input: #494c4f80;
+  --color-border-input: #a4133c;
+  --color-input-text: #590d2280;
+  --color-button-text: #f2f8ff;
+  --color-form-div: #fffff9;
+}
+
+@font-face {
+  font-family: 'Fredoka';
+  src: url('../assets/fonts/fredoka.ttf') format('truetype');
+  font-weight: 700;
+  font-style: bold;
+}
+
+@font-face {
+  font-family: 'Fira Sans';
+  src: url('../assets/fonts/fira-sans-regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-body);
+  width: 100%;
+  min-height: 100vh;
+}
+
+.main-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 4rem auto;
+  width: 90%;
+  max-width: 27rem;
+  background-color: var(--color-form-div);
+  border-radius: 1.25rem;
+  box-shadow: 0px 0px 16px 2px rgba(0, 0, 0, 0.2);
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+}
+
+.header img {
+  width: 1.25rem;
+  height: 1.25rem;
+  align-self: flex-end;
+  margin-bottom: 2rem;
+}
+
+.title {
+  font-family: 'Fredoka', sans-serif;
+  font-size: clamp(1rem, 1rem + 10vw, 5.625rem);
+  font-weight: 700;
+  text-align: center;
+  text-transform: uppercase;
+  margin-top: 2.75rem;
+  margin-bottom: 1.25rem;
+  color: var(--color-title-button);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.input-field {
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+}
+
+.input-field label {
+  font-family: 'Fira Sans', sans-serif;
+  font-size: 1rem;
+  color: var(--color-text);
+}
+
+input {
+  font-family: "Fira Sans", sans-serif;
+  font-size: 1rem;
+  color: var(--color-text);
+  height: 2.5rem;
+  margin-bottom: 2rem;
+  padding: 1rem;
+  border-radius: 0.625rem;
+  border: 1px solid var(--color-input);
+}
+
+input:focus {
+  outline: none;
+  border: 2px solid var(--color-border-input);
+}
+
+input::placeholder {
+  color: var(--color-input-text);
+}
+
+button[type="submit"] {
+  font-family: 'Fira Sans', sans-serif;
+  font-size: 1.25rem;
+  color: var(--color-button-text);
+  width: 70%;
+  max-width: 16rem;
+  height: 3rem;
+  margin-bottom: 2.75rem;
+  border: none;
+  border-radius: 0.625rem;
+  background-color: var(--color-title-button);
+  cursor: pointer;
+}
