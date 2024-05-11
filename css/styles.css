@@ -1,5 +1,5 @@
 :root {
-  --color-body: #7a051a;
+  --color-body: linear-gradient(0deg, rgba(88,129,87,1) 0%, rgba(218,215,205,1) 100%);
   --color-title-button: #a4133c;
   --color-text: #590d22;
   --color-input: #494c4f80;
@@ -27,7 +27,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: var(--color-body); #7a051a
+  background: var(--color-body);
   width: 100%;
   min-height: 100vh;
 }
