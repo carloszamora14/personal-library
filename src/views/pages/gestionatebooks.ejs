@@ -1,0 +1,37 @@
+<%- include('../layouts/mainLayout', { title: 'Home', body: `
+  <h2>Gestionate your books</h2>
+  <button>Add</button>
+  <div>
+    <form>
+      <div>
+        <label for="txtTitle">Title</label>
+        <input type="text" name="txtTitle" id="txtTitle">
+      </div>
+      <div>
+        <label for="txtAthor">Author</label>
+        <input type="text" name="txtAuthor" id="txtAuthor">
+      </div>
+      <div>
+        <label for="slGenre">Genre</label>
+        <select name="slGenre" id="slGenre">
+          <option value="Fantasy">Fantasy</option>
+          <option value="Science Fiction (Sci-Fi)">Science Fiction (Sci-Fi)</option>
+          <option value="Romance">Romance</option>
+          <option value="Mistery">Mistery</option>
+          <option value="Mistery">horror</option>
+      </select>
+      </div>
+      <div>
+        <label for="slStatus">Status</label>
+        <select name="slStatus" id="slStatus">
+          <option value="Reading">Reading</option>
+          <option value="Read">Read</option>
+          <option value="Abandoned">Abandoned</option>
+          <option value="Pending">Pending</option>
+      </select>
+      </div>
+      <input type="button" value="save">
+      <input type="button" value="cancel">
+    </form>
+  </div>
+` }) %>
