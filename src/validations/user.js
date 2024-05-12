@@ -45,21 +45,33 @@ const passwordConfirmationSchema = Joi.string()
   });
 
 const userSignupSchema = Joi.object({
-  username: usernameSchema,
-  email: emailSchema,
-  password: passwordSchema,
-  passwordConfirmation: passwordConfirmationSchema
+  username: usernameSchema.required().messages({
+    'any.required': 'Username is required'
+  }),
+  email: emailSchema.required().messages({
+    'any.required': 'Email is required'
+  }),
+  password: passwordSchema.required().messages({
+    'any.required': 'Password is required'
+  }),
+  passwordConfirmation: passwordConfirmationSchema.required().messages({
+    'any.required': 'Password confirmation is required'
+  })
 });
 
 const userLoginSchema = Joi.object({
-  username: usernameSchema,
-  password: passwordSchema
+  username: usernameSchema.required().messages({
+    'any.required': 'Username is required'
+  }),
+  password: passwordSchema.required().messages({
+    'any.required': 'Password is required'
+  })
 });
 
 const validateLogin = data => {
   const validation = userLoginSchema.validate(data, { abortEarly: false });
   return validation.error ? combineErrors(validation) : null;
-}
+};
 
 const validateSignup = data => {
   const validation = userSignupSchema.validate(data, { abortEarly: false });

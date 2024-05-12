@@ -2,7 +2,8 @@ const express = require("express");
 const bcrypt = require("bcrypt");
 const router = express.Router();
 
-const User = "../models/users.js";
+const User = require("../models/users");
+const { validateLogin, validateSignup } = require("../validations/user")
 
 //create user
 router.get("/login", (req, res) => {
@@ -14,6 +15,12 @@ router.get("/signup", (req, res) => {
 });
 
 router.post("/auth/signup", async (req, res) => {
+  const validationErrors = validateSignup(req.body);
+
+  if (validationErrors) {
+    return res.status(400).json({ errors: validationErrors });
+  }
+
   try {
     const userAlreadyExists = await User.findOne({ username: req.body.username });
 
@@ -30,7 +37,7 @@ router.post("/auth/signup", async (req, res) => {
       password: password
     });
 
-    const { _id: userId } = newUser.save();
+    const { _id: userId } = await newUser.save();
     return res.status(201).json({ error: null, data: userId })
   } catch (err) {
     return res.status(500).json({ error: "An unexpected error occurred" });
