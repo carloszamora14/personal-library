@@ -1,6 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const userRoutes = require("./routes/user");
+const bookRoutes = require("./routes/book");
 require("dotenv").config();
 
 const app = express();
@@ -12,11 +13,13 @@ app.set("view engine", "ejs");
 //Indica a la propiedad views donde encontrar losa archivos de las vistas
 app.set("views", "./src/views");
 
-//
-app.use('')
+// Rutas virtuales
+app.use('/public', express.static(__dirname + '/../public'));
+
 
 //middleware
 app.use(userRoutes);
+app.use(bookRoutes); 
 
 //conexion a mongodb
 mongoose
