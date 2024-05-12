@@ -15,7 +15,7 @@ function checkUsername(username) {
 
 function checkEmail(email) {
   let error = null;
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const emailRegex = /^[^\s@]+@[^\s@]+\.(com|net|org|mx)$/;
 
   if (!email || email.trim() === '') {
     error = 'Email cannot be empty';

@@ -4,10 +4,11 @@ import {
   checkPassword,
   checkPasswordConfirmation
 } from './utils/validations.js';
+import changeLocation from './utils/changeLocation.js';
 
 const form = document.querySelector('.signup-form');
 
-form.addEventListener('submit', evt => {
+form.addEventListener('submit', async evt => {
   evt.preventDefault();
 
   const usernameInput = document.querySelector('#username');
@@ -31,4 +32,44 @@ form.addEventListener('submit', evt => {
   emailErrorMsg.textContent = emailError;
   passwordErrorMsg.textContent = passwordError;
   passwordRepeatErrorMsg.textContent = passwordRepeatError;
+
+  if (usernameError || emailError || passwordError || passwordRepeatError) {
+    return;
+  }
+
+  try {
+    const jsonResponse = await fetch('/auth/signup', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        username: usernameInput.value,
+        email: emailInput.value,
+        password: passwordInput.value,
+        passwordConfirmation: passwordRepeatInput.value
+      })
+    });
+
+    const data = await jsonResponse.json();
+
+    if (data.errors) {
+      const { global, inputValidation } = data.errors;
+      if (global) {
+        document.querySelector('#global-error').textContent = global;
+      }
+
+      if (inputValidation) {
+        usernameErrorMsg.textContent = inputValidation.username;
+        emailErrorMsg.textContent = inputValidation.email;
+        passwordErrorMsg.textContent = inputValidation.password;
+        passwordRepeatErrorMsg.textContent = inputValidation.passwordConfirmation;
+      }
+    } else {
+      changeLocation('/login');
+    }
+
+  } catch (err) {
+    console.error('Error:', err.message);
+  }
 });
