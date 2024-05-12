@@ -1,9 +1,9 @@
 :root {
-  --color-body: linear-gradient(0deg, rgba(88,129,87,1) 0%, rgba(218,215,205,1) 100%);
-  --color-title-button: #3A5A40;
-  --color-text: #344E41;
+  --color-body: linear-gradient(0deg, rgba(88, 129, 87, 1) 0%, rgba(218, 215, 205, 1) 100%);
+  --color-title-button: #3a5a40;
+  --color-text: #344e41;
   --color-input: #494c4f80;
-  --color-border-input: #3A5A40; /*ffff*/
+  --color-border-input: #3a5a40; /*ffff*/
   --color-input-text: #344e418a;
   --color-button-text: #f2f8ff;
   --color-form-div: #fffff9;
@@ -11,14 +11,14 @@
 
 @font-face {
   font-family: 'Fredoka';
-  src: url('../assets/fonts/fredoka.ttf') format('truetype');
+  src: url('/public/assets/fonts/fredoka.ttf') format('truetype');
   font-weight: 700;
   font-style: bold;
 }
 
 @font-face {
   font-family: 'Fira Sans';
-  src: url('../assets/fonts/fira-sans-regular.ttf') format('truetype');
+  src: url('/public/assets/fonts/fira-sans-regular.ttf') format('truetype');
   font-weight: 400;
   font-style: normal;
 }
