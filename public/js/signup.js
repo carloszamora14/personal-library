@@ -5,6 +5,7 @@ import {
   checkPasswordConfirmation
 } from './utils/validations.js';
 import changeLocation from './utils/changeLocation.js';
+import './utils/authHeader.js';
 
 const form = document.querySelector('.signup-form');
 

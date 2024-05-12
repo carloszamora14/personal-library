@@ -4,7 +4,7 @@ const jwt = require("jsonwebtoken");
 const router = express.Router();
 
 const User = require("../models/users");
-const { validateLogin, validateSignup } = require("../validations/user");
+const { validateLogin, validateSignup, verifyToken } = require("../validations/user");
 
 function formatError(global, validation) {
   const result = { errors: {} };
@@ -27,6 +27,10 @@ router.get("/login", (req, res) => {
 
 router.get("/signup", (req, res) => {
   res.render("pages/signup.ejs");
+});
+
+router.get('/test', verifyToken, (req, res) => {
+  res.json({ message: 'It is working' });
 });
 
 router.post("/auth/signup", async (req, res) => {

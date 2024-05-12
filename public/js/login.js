@@ -1,5 +1,6 @@
 import { checkUsername, checkPassword } from './utils/validations.js';
 import changeLocation from './utils/changeLocation.js';
+import './utils/authHeader.js';
 
 const form = document.querySelector('.login-form');
 
@@ -48,7 +49,7 @@ form.addEventListener('submit', async evt => {
       }
     } else {
       localStorage.setItem('jwtToken', data.data.token);
-      changeLocation('/login');
+      changeLocation('/test');
     }
 
   } catch (err) {

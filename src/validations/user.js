@@ -1,4 +1,5 @@
 const Joi = require('joi');
+const jwt = require('jsonwebtoken');
 
 function combineErrors(validation) {
   const errors = {};
@@ -7,6 +8,22 @@ function combineErrors(validation) {
     errors[path] = errorDetail.message;
   }
   return errors;
+}
+
+function verifyToken(req, res, next) {
+  const token = req.header('Authorization')?.split(' ')[1];
+
+  if (!token) {
+    return res.status(401).json({ error: 'Access denied. Please log in to your account' });
+  }
+
+  try {
+    const validToken = jwt.verify(token, process.env.TOKEN_SECRET);;
+    console.log(validToken);
+    next();
+  } catch (err) {
+    res.status(400).json({ error: 'Invalid token' });
+  }
 }
 
 const usernameSchema = Joi.string()
@@ -78,4 +95,4 @@ const validateSignup = data => {
   return validation.error ? combineErrors(validation) : null;
 };
 
-module.exports = { validateLogin, validateSignup };
+module.exports = { validateLogin, validateSignup, verifyToken };
