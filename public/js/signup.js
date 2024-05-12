@@ -22,19 +22,13 @@ form.addEventListener('submit', evt => {
     passwordInput.value, passwordRepeatInput.value
   );
 
-  if (usernameError) {
-    console.log(usernameError);
-  }
+  const usernameErrorMsg = document.querySelector('#username-error');
+  const emailErrorMsg = document.querySelector('#email-error');
+  const passwordErrorMsg = document.querySelector('#password-error');
+  const passwordRepeatErrorMsg = document.querySelector('#password-repeat-error');
 
-  if (emailError) {
-    console.log(emailError);
-  }
-
-  if (passwordError) {
-    console.log(passwordError);
-  }
-
-  if (passwordRepeatError) {
-    console.log(passwordRepeatError);
-  }
+  usernameErrorMsg.textContent = usernameError;
+  emailErrorMsg.textContent = emailError;
+  passwordErrorMsg.textContent = passwordError;
+  passwordRepeatErrorMsg.textContent = passwordRepeatError;
 });

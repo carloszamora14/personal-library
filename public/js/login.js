@@ -11,11 +11,9 @@ form.addEventListener('submit', evt => {
   const usernameError = checkUsername(usernameInput.value);
   const passwordError = checkPassword(passwordInput.value);
 
-  if (usernameError) {
-    console.log(usernameError);
-  }
+  const usernameErrorMsg = document.querySelector('#username-error');
+  const passwordErrorMsg = document.querySelector('#password-error');
 
-  if (passwordError) {
-    console.log(passwordError);
-  }
+  usernameErrorMsg.textContent = usernameError;
+  passwordErrorMsg.textContent = passwordError;
 });
