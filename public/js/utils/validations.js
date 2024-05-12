@@ -2,7 +2,7 @@ function checkUsername(username) {
   let error = null;
   const alphanumericRegex = /^\w+$/;
 
-  if (username.trim() === '') {
+  if (!username || username.trim() === '') {
     error = 'Username cannot be empty';
   } else if (!alphanumericRegex.test(username)) {
     error = 'Username can only contain letters, digits, and underscores';
@@ -13,10 +13,25 @@ function checkUsername(username) {
   return error;
 }
 
+function checkEmail(email) {
+  let error = null;
+  const emailRegex = /^[^\s@]+@[^\s@]+\.(com|net|org|mx)$/;
+
+  if (!email || email.trim() === '') {
+    error = 'Email cannot be empty';
+  } else if (!emailRegex.test(email)) {
+    error = 'Invalid email format';
+  }
+
+  return error;
+}
+
 function checkPassword(password) {
   let error = null;
 
-  if (password.length < 8 || password.length > 60) {
+  if (!password) {
+    error = 'Username cannot be empty';
+  } else if (password.length < 8 || password.length > 60) {
     error = 'Password must be between 8 and 60 characters long';
   }
 
@@ -35,6 +50,7 @@ function checkPasswordConfirmation(password, passwordRepeat) {
 
 export {
   checkUsername,
+  checkEmail,
   checkPassword,
   checkPasswordConfirmation
 };

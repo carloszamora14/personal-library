@@ -1,40 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Personal Library</title>
-    <link rel="stylesheet" href="../../public/normalize.css">
-    <link rel="stylesheet" href="../../public/login.css">
-  </head>
 
-  <body>
-    <main class="main-content">
-      <header class="header">
-        <h1 class="title">Signup</h1>
-        <img src="./assets/images/flower.png" alt="">
-      </header>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Personal Library</title>
+  <link rel="stylesheet" href="/public/normalize.css">
+  <link rel="stylesheet" href="/public/login.css">
+</head>
 
-      <form class="form signup-form">
-        <div class="input-field">
-          <label for="username">Username</label>
-          <input type="text" id="username" required placeholder="Ex. Fernando">
-        </div>
+<body>
+  <main class="main-content">
+    <header class="header">
+      <h1 class="title">Signup</h1>
+      <img src="/public/assets/images/flower.png" alt="">
+    </header>
 
-        <div class="input-field">
-          <label for="password">Password</label>
-          <input type="password" id="password" required>
-        </div>
+    <form class="form signup-form">
+      <div class="input-field">
+        <label for="username">Username</label>
+        <input type="text" id="username" required placeholder="Ex. Fernando">
+        <span class="error-message" id="username-error"></span>
+      </div>
 
-        <div class="input-field">
-          <label for="password-repeat">Repeat password</label>
-          <input type="password" id="password-repeat" required>
-        </div>
+      <div class="input-field">
+        <label for="email">Email</label>
+        <input type="email" id="email" required placeholder="Ex. user@gmail.com">
+        <span class="error-message" id="email-error"></span>
+      </div>
 
-        <button type="submit" id="signup">Sign up</button>
-      </form>
-    </main>
+      <div class="input-field">
+        <label for="password">Password</label>
+        <input type="password" id="password" required>
+        <span class="error-message" id="password-error"></span>
+      </div>
 
-    <script src="./js/signup.js" type="module"></script>
-  </body>
+      <div class="input-field">
+        <label for="password-repeat">Repeat password</label>
+        <input type="password" id="password-repeat" required>
+        <span class="error-message" id="password-repeat-error"></span>
+      </div>
+
+      <span class="error-message" id="global-error"></span>
+      <button type="submit" id="signup">Sign up</button>
+    </form>
+  </main>
+
+  <script src="/public/js/signup.js" type="module"></script>
+</body>
+
 </html>
