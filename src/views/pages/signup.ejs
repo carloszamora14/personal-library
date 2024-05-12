@@ -1,40 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Personal Library</title>
-    <link rel="stylesheet" href="../../public/normalize.css">
-    <link rel="stylesheet" href="../../public/styles.css">
-  </head>
 
-  <body>
-    <main class="main-content">
-      <header class="header">
-        <h1 class="title">Signup</h1>
-        <img src="./assets/images/flower.png" alt="">
-      </header>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Personal Library</title>
+  <link rel="stylesheet" href="/public/normalize.css">
+  <link rel="stylesheet" href="/public/styles.css">
+</head>
 
-      <form class="form signup-form">
-        <div class="input-field">
-          <label for="username">Username</label>
-          <input type="text" id="username" required placeholder="Ex. Fernando">
-        </div>
+<body>
+  <main class="main-content">
+    <header class="header">
+      <h1 class="title">Signup</h1>
+      <img src="/public/assets/images/flower.png" alt="">
+    </header>
 
-        <div class="input-field">
-          <label for="password">Password</label>
-          <input type="password" id="password" required>
-        </div>
+    <form class="form signup-form" action="/users" method="POST" enctype="multipart/form-data">
+      <div class="input-field">
+        <label for="username">Username</label>
+        <input type="text" id="username" name="username" required placeholder="Ex. Fernando">
+      </div>
 
-        <div class="input-field">
-          <label for="password-repeat">Repeat password</label>
-          <input type="password" id="password-repeat" required>
-        </div>
+      <div class="input-field">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" required>
+      </div>
 
-        <button type="submit" id="signup">Sign up</button>
-      </form>
-    </main>
+      <div class="input-field">
+        <label for="password-repeat">Repeat password</label>
+        <input type="password" id="password-repeat" name="passwordRepeat" required>
+      </div>
 
-    <script src="./js/signup.js" type="module"></script>
-  </body>
+      <button type="submit" id="signup">Sign up</button>
+    </form>
+  </main>
+</body>
+
 </html>
