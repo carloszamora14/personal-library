@@ -1,0 +1,147 @@
+:root {
+  --color-header: #588157;
+  --color-nav-select: #588157;
+  --color-title: #FFFFF9;
+  --color-background: #FFFFF9;
+  --color-subtitle: #3A5A40;
+  --color-text: #344E41;
+  --color-navbar: #DAD7CD;
+  --color-button: #B8E780;
+}
+
+@font-face {
+  font-family: 'Homemade Apple';
+  src: url(./assets/fonts/HomemadeApple-Regular.ttf) format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Itim';
+  src: url(./assets/fonts/Itim-Regular.ttf) format('truetype');
+  font-weight: 400;
+  font-style: cursive;
+}
+
+@font-face {
+  font-family: 'Kalam';
+  src: url(./assets/fonts/Kalam-Regular.ttf) format('truetype');
+  font-weight: 400;
+  font-style: cursive;
+}
+
+h2 {
+  font-family: 'Itim', cursive;
+  color: var(--color-subtitle);
+  font-size: 30px;
+}
+
+/* - - - - - - - - - -  Header  - - - - - - - - - - - */
+
+header {
+  background-color: var(--color-header);
+  font-family: 'Homemade Apple', sans-serif;
+  font-size: 30px;
+  color: var(--color-title);
+  text-align: center;
+  padding: 10px;
+}
+
+/* - - - - - - - - - -  Navbar  - - - - - - - - - - - */
+
+aside {
+  float: left;
+  height: 86vh; 
+  width: 275px;
+
+}
+
+nav {
+  align-items: start;
+  background-color: var(--color-navbar);
+  padding: 10px;
+  height: 86vh; 
+  width: 275px;
+}
+
+nav ul {
+  display: flex;
+  list-style-type: none;
+  padding: 0;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+nav ul hr{
+  border: solid 0.5px var(--color-nav-select);
+  margin: 20px;
+  width: 230px;
+
+}
+
+nav ul li{
+  padding: 10px; 
+  text-align: center;
+  width: 220px;
+  border-radius: 15px;
+}
+
+nav ul li a{
+  text-decoration: none;
+  color: var(--color-subtitle);
+  font-size: 22px;
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+  font-family: "Itim", cursive;
+}
+
+nav ul li:hover{
+  background-color: var(--color-nav-select);
+  color: var(--color-title);
+  width: 100%;	
+  border-radius: 15px;
+  height: 100%;
+}
+
+nav ul li a:hover{
+  color: var(--color-title);
+}
+
+main{
+  display: flex;
+  flex-direction: row;
+}
+
+
+/* - - - - - - - - - -  Home - - - - - - - - - - - */
+
+.home-section{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 87vh;
+  width: 100%;
+}
+
+.home-section img{
+  width: 324px;
+  border-radius: 15px;
+}
+
+/* - - - - - - - - - -  gestionate books - - - - - - - - - - - */
+
+.gestionate-books-section {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  height: 87vh;
+  width: 100%;
+}
+
+.gestionate-books-section button {
+  background-color: var(--color-button);
+  
+}

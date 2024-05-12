@@ -49,7 +49,7 @@ form.addEventListener('submit', async evt => {
       }
     } else {
       localStorage.setItem('jwtToken', data.data.token);
-      changeLocation('/test');
+      changeLocation('/home');
     }
 
   } catch (err) {
