@@ -135,9 +135,21 @@ button[type="submit"] {
   width: 70%;
   max-width: 16rem;
   height: 3rem;
-  margin-bottom: 2.75rem;
+  margin-bottom: 1rem;
   border: none;
   border-radius: 0.625rem;
   background-color: var(--color-title-button);
   cursor: pointer;
+}
+
+a {
+  font-family: 'Fira Sans', sans-serif;
+  font-size: 1rem;
+  color: var(--color-text);
+  text-decoration: none;
+  margin-bottom: 2.75rem;
+}
+
+a:hover {
+  text-decoration: underline;
 }
