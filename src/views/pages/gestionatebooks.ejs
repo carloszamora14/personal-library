@@ -1,20 +1,20 @@
-<%- include('../layouts/mainLayout', { title: 'Home', body: `
+<%- include('../layouts/mainLayout', { title: 'Home', body:`
   <div class="gestionate-books-section">
     <h3>Gestionate your books</h3>
     <button>Add</button>
     <div>
-      <form>
+      <form action="/gestionatebooks" method="POST">
         <div>
-          <label for="txtTitle">Title</label>
-          <input type="text" name="txtTitle" id="txtTitle">
+          <label for="title">Title</label>
+          <input type="text" name="title" id="title">
         </div>
         <div>
-          <label for="txtAthor">Author</label>
-          <input type="text" name="txtAuthor" id="txtAuthor">
+          <label for="author">Author</label>
+          <input type="text" name="author" id="author">
         </div>
         <div>
-          <label for="slGenre">Genre</label>
-          <select name="slGenre" id="slGenre">
+          <label for="genre">Genre</label>
+          <select name="genre" id="genre">
             <option value="Fantasy">Fantasy</option>
             <option value="Science Fiction (Sci-Fi)">Science Fiction (Sci-Fi)</option>
             <option value="Romance">Romance</option>
@@ -23,17 +23,29 @@
         </select>
         </div>
         <div>
-          <label for="slStatus">Status</label>
-          <select name="slStatus" id="slStatus">
+          <label for="status">Status</label>
+          <select name="status" id="status">
             <option value="Reading">Reading</option>
             <option value="Read">Read</option>
             <option value="Abandoned">Abandoned</option>
             <option value="Pending">Pending</option>
         </select>
         </div>
-        <input type="button" value="save">
-        <input type="button" value="cancel">
+        <input type="submit" value="Add book" class="button">
+        <input type="button" id="btnCancel" value="cancel">
       </form>
     </div>
   </div>
-` }) %>
+
+  <div>
+    <table>
+      <tr>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Genre</th>
+        <th>Status</th>
+        <th>Actions</th>
+      </tr>
+  </table>
+  </div>
+  `}) %>
