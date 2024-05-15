@@ -41,26 +41,23 @@ h2 {
 header {
   background-color: var(--color-header);
   font-family: 'Homemade Apple', sans-serif;
-  font-size: 28px;
+  font-size: 20px;
   color: var(--color-title);
   text-align: center;
-  padding: 10px;
+  padding: 5px;
 }
 
 /* - - - - - - - - - -  Navbar  - - - - - - - - - - - */
 
 aside {
   float: left;
-  height: 86vh; 
-  width: 275px;
-
 }
 
 nav {
   align-items: start;
   background-color: var(--color-navbar);
   padding: 10px;
-  height: 86vh; 
+  height: 89.5vh; 
   width: 275px;
 }
 
