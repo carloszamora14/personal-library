@@ -11,8 +11,9 @@ router.get('/allbooks', (req,res)=>{
   res.render('pages/allbooks.ejs', {title:'All books'}); 
 })
 
-router.get('/gestionatebooks', (req,res)=>{
-  res.render('pages/gestionatebooks.ejs', {title:'Gestionate books'})
+router.get('/gestionatebooks', async (req,res)=>{
+  const Books = await Book.find({});
+  res.render('pages/gestionatebooks.ejs', {title:'Gestionate books', Books})
 })
 
 router.post('/gestionatebooks', async (req, res) => {
@@ -24,9 +25,7 @@ router.post('/gestionatebooks', async (req, res) => {
       status:req.body.status
     });
 
-    const bookSaved =  await newBook.save();  
-    console.log(bookSaved); 
-    /*const Books = await Book.find({});*/
+    await newBook.save();  
     res.render('pages/gestionatebooks.ejs');
   } catch (error) {
     res.status(500).send(error);
