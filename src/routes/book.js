@@ -1,17 +1,18 @@
 const express = require("express");
 const router = express.Router();
 const Book = require('../models/books')
+const expressLayouts = require('express-ejs-layouts');
 
 router.get('/home', (req,res)=>{
-  res.render('pages/home.ejs')
+  res.render('pages/home.ejs', {title:'Home'});
 })
 
 router.get('/allbooks', (req,res)=>{
-  res.render('pages/allbooks.ejs')
+  res.render('pages/allbooks.ejs', {title:'All books'}); 
 })
 
 router.get('/gestionatebooks', (req,res)=>{
-  res.render('pages/gestionatebooks.ejs')
+  res.render('pages/gestionatebooks.ejs', {title:'Gestionate books'})
 })
 
 router.post('/gestionatebooks', async (req, res) => {

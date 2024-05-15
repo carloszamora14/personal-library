@@ -1,13 +1,14 @@
 const request = require('supertest');
 const mongoose = require('mongoose');
-const { MongoMemoryServer } = require('mongodb-memory-server');
-const app = require('../app');
-const Book = require('../models/books')
+const { MongoMemoryServer } = require('mongodb-memory-server'); //
+const app = require('../app'); //Archivo aparte si la inicializacion automatica del servidor 
+const Book = require('../models/books') //indicar el modelo de la bd para su instancia
 
 describe('POST /gestionatebooks', () => {
   let mongoServer;
-  let db;
 
+  /* Se realiza la conexión con la base de datos. 
+  Primero se cierra cualquier conexion que haya establecido anteriormente */
   beforeAll(async () => {
     await mongoose.disconnect();
     mongoServer = await MongoMemoryServer.create();
