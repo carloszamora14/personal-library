@@ -41,26 +41,23 @@ h2 {
 header {
   background-color: var(--color-header);
   font-family: 'Homemade Apple', sans-serif;
-  font-size: 30px;
+  font-size: 20px;
   color: var(--color-title);
   text-align: center;
-  padding: 10px;
+  padding: 5px;
 }
 
 /* - - - - - - - - - -  Navbar  - - - - - - - - - - - */
 
 aside {
   float: left;
-  height: 86vh; 
-  width: 275px;
-
 }
 
 nav {
   align-items: start;
   background-color: var(--color-navbar);
   padding: 10px;
-  height: 86vh; 
+  height: 89.5vh; 
   width: 275px;
 }
 
@@ -97,7 +94,7 @@ nav ul li a{
   font-family: "Itim", cursive;
 }
 
-nav ul li:hover{
+/*nav ul li:hover{
   background-color: var(--color-nav-select);
   color: var(--color-title);
   width: 100%;	
@@ -107,7 +104,7 @@ nav ul li:hover{
 
 nav ul li a:hover{
   color: var(--color-title);
-}
+}*/
 
 main{
   display: flex;
@@ -143,5 +140,17 @@ main{
 
 .gestionate-books-section button {
   background-color: var(--color-button);
-  
+  width: 100px;
+  height: 30px;
+  border-radius: 15px;
+  font-family: 'Itim', cursive;
+  font-weight: normal;
+  font-size: 20px;
+  color: var(--color-title);
+  cursor: pointer;
+  border: none;
+}
+
+button:hover {
+  background-color: #8eb169;
 }
