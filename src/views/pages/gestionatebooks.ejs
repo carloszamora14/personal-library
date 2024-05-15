@@ -1,39 +1,62 @@
-<%- include('../layouts/mainLayout', { title: 'Home', body: `
-  <div class="gestionate-books-section">
-    <h3>Gestionate your books</h3>
-    <button>Add</button>
-    <div>
-      <form>
-        <div>
-          <label for="txtTitle">Title</label>
-          <input type="text" name="txtTitle" id="txtTitle">
-        </div>
-        <div>
-          <label for="txtAthor">Author</label>
-          <input type="text" name="txtAuthor" id="txtAuthor">
-        </div>
-        <div>
-          <label for="slGenre">Genre</label>
-          <select name="slGenre" id="slGenre">
-            <option value="Fantasy">Fantasy</option>
-            <option value="Science Fiction (Sci-Fi)">Science Fiction (Sci-Fi)</option>
-            <option value="Romance">Romance</option>
-            <option value="Mistery">Mistery</option>
-            <option value="Mistery">horror</option>
-        </select>
-        </div>
-        <div>
-          <label for="slStatus">Status</label>
-          <select name="slStatus" id="slStatus">
-            <option value="Reading">Reading</option>
-            <option value="Read">Read</option>
-            <option value="Abandoned">Abandoned</option>
-            <option value="Pending">Pending</option>
-        </select>
-        </div>
-        <input type="button" value="save">
-        <input type="button" value="cancel">
-      </form>
-    </div>
+<div class="gestionate-books-section">
+  <h3>Gestionate your books</h3>
+  <button>Add</button>
+  <div>
+    <form action="/gestionatebooks" method="POST">
+      <div>
+        <label for="title">Title</label>
+        <input type="text" name="title" id="title">
+      </div>
+      <div>
+        <label for="author">Author</label>
+        <input type="text" name="author" id="author">
+      </div>
+      <div>
+        <label for="genre">Genre</label>
+        <select name="genre" id="genre">
+          <option value="Fantasy">Fantasy</option>
+          <option value="Science Fiction (Sci-Fi)">Science Fiction (Sci-Fi)</option>
+          <option value="Romance">Romance</option>
+          <option value="Mistery">Mistery</option>
+          <option value="Mistery">horror</option>
+      </select>
+      </div>
+      <div>
+        <label for="status">Status</label>
+        <select name="status" id="status">
+          <option value="Reading">Reading</option>
+          <option value="Read">Read</option>
+          <option value="Abandoned">Abandoned</option>
+          <option value="Pending">Pending</option>
+      </select>
+      </div>
+      <input type="submit" value="Add book" class="button">
+      <input type="button" id="btnCancel" value="cancel">
+    </form>
   </div>
-` }) %>
+</div>
+
+<div>
+  <table>
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Genre</th>
+        <th>Status</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+      <% Object.keys(Books).forEach(function(prop) { %>
+        <tr>
+            <td><%= Books[prop].title %></td>
+            <td><%= Books[prop].author %></td>
+            <td><%= Books[prop].genre %></td>
+            <td><%= Books[prop].status %></td>
+            <td></td>
+        </tr>
+      <%});%>
+    </tbody>
+</table>
+</div>
