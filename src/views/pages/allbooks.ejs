@@ -1,3 +1,47 @@
 <div class="all-books">
-  <img src="" alt="logo My personal library">
+  <div class="title">
+    <h3>Your Library</h3>
+  </div>
+
+  <div class="search-bar">
+    <label for="search-input">Search:</label>
+    <input
+      type="text"
+      id="search-input"
+      onkeyup="filterSelectInput()"
+      placeholder="Type to search..."
+    />
+
+    <label for="filter-label">Filter by:</label>
+
+    <select id="filter-select" onchange="filterSelectInput()">
+      <option value="title">Title</option>
+      <option value="author">Author</option>
+    </select>
+  </div>
+
+  <div class="list-books">
+    <table id="books-table">
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Author</th>
+          <th>Genre</th>
+          <th>Status</th>
+          <hr>
+        </tr>
+      </thead>
+      <tbody>
+        <% Object.keys(Books).forEach(function(prop) { %>
+          <tr>
+            <td><%= Books[prop].title %></td>
+            <td><%= Books[prop].author %></td>
+            <td><%= Books[prop].genre %></td>
+            <td><%= Books[prop].status %></td>
+            <td></td>
+          </tr>
+          <%});%>
+      </tbody>
+    </table>
+  </div>
 </div>
