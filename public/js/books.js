@@ -1,3 +1,4 @@
+// filtrado de libros por título y autor
 function filterBarInput(value) {
   var input, filter, table, tr, td, i, txtValue;
   var found = 0;
