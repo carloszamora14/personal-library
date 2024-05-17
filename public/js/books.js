@@ -47,3 +47,11 @@ function filterSelectInput() {
     filterBarInput(1);
   } 
 }
+
+document.addEventListener('DOMContentLoaded', (event) => {
+  var path = window.location.pathname.split("/").pop();
+  if (path == "") path = "home";
+  var target = document.querySelector('.nav-link.' + path);
+  console.log("Target: ", target);
+  target.classList.add('active');
+});

@@ -108,6 +108,16 @@ main {
   flex-direction: row;
 }
 
+.active {
+  background-color: var(--color-nav-select);
+  color: var(--color-title);
+  border-radius: 15px;
+  height: 10%;
+}
+.active a {
+  color: var(--color-title);
+}
+
 /* - - - - - - - - - -  Home - - - - - - - - - - - */
 
 .home-section {
