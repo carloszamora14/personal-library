@@ -66,16 +66,20 @@ btnUpdate.addEventListener("click", async ()=>{
   const Books = await Book.findById(bookId);
   document.getElementById('title').value = Books[prop].title;
   document.getElementById('author').value = Books[prop].author;
-  documet.getElementById('genre').value = Books[prop].genre;
+  document.getElementById('genre').value = Books[prop].genre;
   document.getElementById('status').value = Books[prop].status; 
 });  
 
 function visibilityform() {
-  var x = document.getElementsByClassName("gestionate-form");
+  var x = document.getElementsByClassName("gestionate-form")[0];
   console.log(x.style.display.toString());
   if (x.style.display === "none") {
     x.style.display = "";
   } else {
     x.style.display = "none";
+    document.getElementById('title').value = "";
+    document.getElementById('author').value = "";
+    document.getElementById('genre').selectedIndex = 0;
+    document.getElementById('status').selectedIndex = 0;
   }
 }
