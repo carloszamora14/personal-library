@@ -39,8 +39,7 @@ router.post('/gestionatebooks', async (req, res) => {
     });
 
     await newBook.save(); 
-    const updatedBooks = await Book.find({});
-    res.render('pages/gestionatebooks.ejs', { title: 'Gestionate books', Books: updatedBooks });
+    res.redirect('/gestionatebooks');
   } catch (error) {
     res.status(500).send(error);
   }
