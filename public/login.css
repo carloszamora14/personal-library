@@ -72,13 +72,16 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 70%;
+}
+
+.form > * {
   width: 100%;
 }
 
 .input-field {
   display: flex;
   flex-direction: column;
-  width: 70%;
   margin-bottom: 2rem;
 }
 
@@ -125,14 +128,12 @@ input::placeholder {
   font-weight: 600;
   font-size: 1.25rem;
   text-align: center;
-  width: 70%;
 }
 
 button[type="submit"] {
   font-family: 'Fira Sans', sans-serif;
   font-size: 1.25rem;
   color: var(--color-button-text);
-  width: 70%;
   max-width: 16rem;
   height: 3rem;
   margin-bottom: 1rem;
@@ -146,6 +147,7 @@ a {
   font-family: 'Fira Sans', sans-serif;
   font-size: 1rem;
   color: var(--color-text);
+  text-align: center;
   text-decoration: none;
   margin-bottom: 2.75rem;
 }

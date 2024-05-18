@@ -1,50 +1,47 @@
-const express = require("express");
-const bcrypt = require("bcrypt");
-const jwt = require("jsonwebtoken");
+const express = require('express');
+const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 const router = express.Router();
 
-const User = require("../models/users");
-const { validateLogin, validateSignup, verifyToken } = require("../validations/user");
+const User = require('../models/users');
+const { validateLogin, validateSignup, verifyToken } = require('../validations/user');
 
-function formatError(global, validation) {
-  const result = { errors: {} };
-
-  if (global) {
-    result.errors.global = global;
-  }
-
-  if (validation) {
-    result.errors.inputValidation = validation;
-  }
-
-  return result;
+function templateVariables(userInput, validationErrors, globalError) {
+  return {
+    layout: false,
+    userInput: userInput || {},
+    validationErrors: validationErrors || {},
+    globalError: globalError || ''
+  };
 }
 
-//create user
-router.get("/login", (req, res) => {
-  res.render("pages/index.ejs");
+router.get('/login', (req, res) => {
+  res.render('pages/index.ejs', templateVariables());
 });
 
-router.get("/signup", (req, res) => {
-  res.render("pages/signup.ejs");
+router.get('/signup', (req, res) => {
+  res.render('pages/signup.ejs', templateVariables());
 });
 
 router.get('/test', verifyToken, (req, res) => {
   res.json({ message: 'It is working' });
 });
 
-router.post("/auth/signup", async (req, res) => {
+router.post('/signup', async (req, res) => {
   const validationErrors = validateSignup(req.body);
 
   if (validationErrors) {
-    return res.status(400).json(formatError(null, validationErrors));
+    return res.status(400).render('pages/signup.ejs', templateVariables(req.body, validationErrors));
   }
 
   try {
     const userAlreadyExists = await User.findOne({ username: req.body.username });
 
     if (userAlreadyExists) {
-      return res.status(400).json(formatError("Username is already registered", null));
+      return res.status(400).render(
+        'pages/signup.ejs',
+        templateVariables(req.body, validationErrors, 'Username is already registered')
+      );
     }
 
     const salt = await bcrypt.genSalt(10);
@@ -56,31 +53,40 @@ router.post("/auth/signup", async (req, res) => {
       password: password
     });
 
-    const { _id: userId } = await newUser.save();
-    return res.status(201).json({ errors: null, data: { userId } });
+    await newUser.save();
+    return res.redirect('/login');
   } catch (err) {
-    return res.status(500).json(formatError("An unexpected error occurred. Please try again", null));
+    return res.status(500).render(
+      'pages/signup.ejs',
+      templateVariables(req.body, validationErrors, 'An unexpected error occurred. Please try again')
+    );
   }
 });
 
-router.post("/auth/login", async (req, res) => {
+router.post('/login', async (req, res) => {
   const validationErrors = validateLogin(req.body);
 
   if (validationErrors) {
-    return res.status(400).json(formatError(null, validationErrors));
+    return res.status(400).render('pages/index.ejs', templateVariables(req.body, validationErrors));
   }
 
   try {
     const user = await User.findOne({ username: req.body.username });
 
     if (!user) {
-      return res.status(400).json(formatError("Invalid login credentials", null));
+      return res.status(400).render(
+        'pages/index.ejs',
+        templateVariables(req.body, validationErrors, 'Invalid login credentials')
+      );
     }
 
     const validPassword = await bcrypt.compare(req.body.password, user.password);
 
     if (!validPassword) {
-      return res.status(400).json(formatError("Invalid login credentials", null));
+      return res.status(400).render(
+        'pages/index.ejs',
+        templateVariables(req.body, validationErrors, 'Invalid login credentials')
+      );
     }
 
     const token = jwt.sign({
@@ -88,9 +94,17 @@ router.post("/auth/login", async (req, res) => {
       id: user._id
     }, process.env.JWT_SECRET, { expiresIn: '1h' });
 
-    return res.status(200).json({ error: null, data: { token } });
+    res.cookie('accessToken', token, {
+      httpOnly: true,
+      maxAge: 60 * 60 * 1000
+    });
+
+    return res.redirect('/home');
   } catch (err) {
-    return res.status(500).json(formatError("An unexpected error occurred. Please try again", null));
+    return res.status(500).render(
+      'pages/index.ejs',
+      templateVariables(req.body, validationErrors, 'An unexpected error occurred. Please try again')
+    );
   }
 });
 

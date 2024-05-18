@@ -43,7 +43,7 @@ const emailSchema = Joi.string()
   .email({ minDomainSegments: 2, tlds: { allow: ['com', 'net', 'org', 'mx'] } })
   .messages({
     'string.empty': 'Email cannot be empty',
-    'string.email': 'Invalid email format'
+    'string.email': 'Invalid email format. The top-level domain must be one of "com", "net", "org" or "mx"'
   });
 
 const passwordSchema = Joi.string()

@@ -16,38 +16,49 @@
       <img src="/public/assets/images/flower.png" alt="">
     </header>
 
-    <form class="form signup-form">
+    <form class="form signup-form" action="/signup" method="POST">
       <div class="input-field">
         <label for="username">Username</label>
-        <input type="text" id="username" required placeholder="Ex. Fernando">
-        <span class="error-message" id="username-error"></span>
+        <input type="text" id="username" name="username" required placeholder="Ex. Fernando"
+          value="<%= userInput.username %>">
+        <span class="error-message" id="username-error">
+          <%= validationErrors.username %>
+        </span>
       </div>
 
       <div class="input-field">
         <label for="email">Email</label>
-        <input type="email" id="email" required placeholder="Ex. user@gmail.com">
-        <span class="error-message" id="email-error"></span>
+        <input type="email" id="email" name="email" required placeholder="Ex. user@gmail.com"
+          value="<%= userInput.email %>">
+        <span class="error-message" id="email-error">
+          <%= validationErrors.email %>
+        </span>
       </div>
 
       <div class="input-field">
         <label for="password">Password</label>
-        <input type="password" id="password" required>
-        <span class="error-message" id="password-error"></span>
+        <input type="password" id="password" name="password" value="<%= userInput.password %>" required>
+        <span class="error-message" id="password-error">
+          <%= validationErrors.password %>
+        </span>
       </div>
 
       <div class="input-field">
-        <label for="password-repeat">Repeat password</label>
-        <input type="password" id="password-repeat" required>
-        <span class="error-message" id="password-repeat-error"></span>
+        <label for="password-confirmation">Repeat password</label>
+        <input type="password" id="password-confirmation" name="passwordConfirmation"
+          value="<%= userInput.passwordConfirmation %>" required>
+        <span class="error-message" id="password-confirmation-error">
+          <%= validationErrors.passwordConfirmation %>
+        </span>
       </div>
 
-      <span class="error-message" id="global-error"></span>
+      <span class="error-message" id="global-error">
+        <%= globalError %>
+      </span>
       <button type="submit" id="signup">Sign up</button>
       <a href="/login">Already have an account? Login</a>
     </form>
   </main>
-
-  <script src="/public/js/signup.js" type="module"></script>
 </body>
 
 </html>
