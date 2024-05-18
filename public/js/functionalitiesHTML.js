@@ -1,4 +1,3 @@
-
 // filtrado de libros por título y autor
 function filterBarInput(value) {
   var input, filter, table, tr, td, i, txtValue;
@@ -39,6 +38,7 @@ function filterBarInput(value) {
   }
 }
 
+// Definir la función para filtrar por título o autor
 function filterSelectInput() {
   var select = document.getElementById("filter-select");
   var value = select.value;
@@ -49,6 +49,7 @@ function filterSelectInput() {
   } 
 }
 
+// Funcion para mostrar en el navbar la pagina actual
 document.addEventListener('DOMContentLoaded', (event) => {
   var path = window.location.pathname.split("/").pop();
   if (path == "") path = "home";
@@ -65,6 +66,20 @@ btnUpdate.addEventListener("click", async ()=>{
   const Books = await Book.findById(bookId);
   document.getElementById('title').value = Books[prop].title;
   document.getElementById('author').value = Books[prop].author;
-  documet.getElementById('genre').value = Books[prop].genre;
+  document.getElementById('genre').value = Books[prop].genre;
   document.getElementById('status').value = Books[prop].status; 
 });  
+
+function visibilityform() {
+  var x = document.getElementsByClassName("gestionate-form")[0];
+  console.log(x.style.display.toString());
+  if (x.style.display === "none") {
+    x.style.display = "";
+  } else {
+    x.style.display = "none";
+    document.getElementById('title').value = "";
+    document.getElementById('author').value = "";
+    document.getElementById('genre').selectedIndex = 0;
+    document.getElementById('status').selectedIndex = 0;
+  }
+}
