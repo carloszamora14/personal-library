@@ -68,10 +68,11 @@ router.post('/login', async (req, res) => {
   }
 
   try {
-    const user = await User.findOne({ username: req.body.username });
+    const usernamePattern = new RegExp('^' + req.body.username + '$', 'i');
+    const user = await User.findOne({ username: { $regex: usernamePattern } });
 
     if (!user) {
-      return res.status(400).render(
+      return res.status(401).render(
         'pages/index.ejs',
         templateVariables(req.body, validationErrors, 'Invalid login credentials')
       );
@@ -80,7 +81,7 @@ router.post('/login', async (req, res) => {
     const validPassword = await bcrypt.compare(req.body.password, user.password);
 
     if (!validPassword) {
-      return res.status(400).render(
+      return res.status(401).render(
         'pages/index.ejs',
         templateVariables(req.body, validationErrors, 'Invalid login credentials')
       );
