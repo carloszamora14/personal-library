@@ -1,17 +1,14 @@
-function togglePassword(htmlElement) {
-  const input = htmlElement.parentElement.querySelector('input');
-  const img = htmlElement.querySelector('img');
-  const srcArray = img.getAttribute('src').split('/');
+function togglePassword(button) {
+  const input = button.previousElementSibling;
+  const img = button.querySelector('img');
 
-  if (srcArray.pop() === 'eye.png') {
-    srcArray.push('hidden-eye.png');
-    input.setAttribute('type', 'text');
-    img.setAttribute('alt', 'Hide password');
+  if (input.type === 'password') {
+    img.src = img.src.replace('eye.png', 'hidden-eye.png');
+    input.type = 'text';
+    img.alt = 'Hide password';
   } else {
-    srcArray.push('eye.png');
-    input.setAttribute('type', 'password');
-    img.setAttribute('alt', 'Show password');
+    img.src = img.src.replace('hidden-eye.png', 'eye.png');
+    input.type = 'password';
+    img.alt = 'Show password';
   }
-
-  img.setAttribute('src', srcArray.join('/'));
 }

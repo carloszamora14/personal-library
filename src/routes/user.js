@@ -23,10 +23,6 @@ router.get('/signup', (req, res) => {
   res.render('pages/signup.ejs', templateVariables());
 });
 
-router.get('/test', verifyToken, (req, res) => {
-  res.json({ message: 'It is working' });
-});
-
 router.post('/signup', async (req, res) => {
   const validationErrors = validateSignup(req.body);
 

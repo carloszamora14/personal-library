@@ -96,7 +96,7 @@ body {
 }
 
 input {
-  font-family: "Fira Sans", sans-serif;
+  font-family: 'Fira Sans', sans-serif;
   font-size: 1rem;
   color: var(--color-text);
   padding: 0.625rem 1rem;
@@ -123,14 +123,15 @@ input::placeholder {
 }
 
 #global-error {
+  font-family: 'Fira Sans', sans-serif;
   margin-top: 1rem;
   margin-bottom: 1rem;
   font-weight: 600;
-  font-size: 1.25rem;
+  font-size: 1.125rem;
   text-align: center;
 }
 
-button[type="submit"] {
+button[type='submit'] {
   font-family: 'Fira Sans', sans-serif;
   font-size: 1.25rem;
   color: var(--color-button-text);
