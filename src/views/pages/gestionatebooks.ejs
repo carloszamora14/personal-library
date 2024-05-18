@@ -52,24 +52,23 @@
         </tr>
       </thead>
       <tbody>
-        <% Object.keys(Books).forEach(function(prop) { %>
+        <% Object.keys(Books).forEach(function(prop, index) { %>
           <tr>
             <td>
-              <%= Books[prop].title %>
+              <%- Books[prop].title %>
             </td>
             <td>
-              <%= Books[prop].author %>
+              <%- Books[prop].author %>
             </td>
             <td>
-              <%= Books[prop].genre %>
+              <%- Books[prop].genre %>
             </td>
             <td>
-              <%= Books[prop].status %>
+              <%- Books[prop].status %>
             </td>
             <td>
-              <!-- Combinación de ambos cambios o uno de ellos -->
-              <button>Edit</button>
-              <button>Delete</button>
+              <button id="btnUpdate<%-index%>" data-id="<%- Books[prop]._id %>">Edit</button>
+              <button id="btnDelete">Delete</button>
             </td>
           </tr>
           <%});%>
