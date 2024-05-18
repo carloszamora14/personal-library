@@ -1,5 +1,6 @@
 const express = require("express");
 const expressLayouts = require('express-ejs-layouts');
+const cookieParser = require('cookie-parser');
 const mongoose = require("mongoose");
 require("dotenv").config();
 
@@ -13,13 +14,13 @@ app.set("view engine", "ejs");
 app.set("views", "./src/views");
 //libreria para el manejo de layouts
 app.use(expressLayouts);
-app.set('layout', 'layouts/mainLayout'); 
+app.set('layout', 'layouts/mainLayout');
 
 
 // Rutas virtuales y middleware
 app.use("/public", express.static(__dirname + "/../public"));
 app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
+app.use(cookieParser());
 
 // Rutas
 app.use(userRoutes);

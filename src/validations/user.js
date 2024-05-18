@@ -11,14 +11,14 @@ function combineErrors(validation) {
 }
 
 function verifyToken(req, res, next) {
-  const token = req.header('Authorization')?.split(' ')[1];
+  const token = req.cookies?.accessToken;
 
   if (!token) {
     return res.status(401).json({ error: 'Access denied. Please log in to your account' });
   }
 
   try {
-    const validToken = jwt.verify(token, process.env.TOKEN_SECRET);;
+    const validToken = jwt.verify(token, process.env.JWT_SECRET);;
     console.log(validToken);
     next();
   } catch (err) {
@@ -43,7 +43,7 @@ const emailSchema = Joi.string()
   .email({ minDomainSegments: 2, tlds: { allow: ['com', 'net', 'org', 'mx'] } })
   .messages({
     'string.empty': 'Email cannot be empty',
-    'string.email': 'Invalid email format'
+    'string.email': 'Invalid email format. The top-level domain must be one of "com", "net", "org" or "mx"'
   });
 
 const passwordSchema = Joi.string()
