@@ -347,9 +347,10 @@ button:hover {
 .list-books {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
   margin-top: 25px;
+  overflow-y: auto;
+  /* justify-content: center;
+  align-items: center; */
 }
 
 .list-books table {
@@ -361,6 +362,8 @@ button:hover {
 .list-books table thead {
   background-color: var(--color-nav-select);
   color: var(--color-title);
+  position: sticky;
+  top: 0;
 }
 
 .list-books table th {
@@ -395,3 +398,20 @@ button:hover {
   background-color: var(--color-header);
   color: var(--color-title);
 }*/
+
+/* Personaliza la barra de desplazamiento*/
+.list-books::-webkit-scrollbar {
+  width: 12px; /* Ancho de la barra de desplazamiento */
+}
+
+.list-books::-webkit-scrollbar-track {
+  background: #f1f1f1; /* Color de la pista de la barra de desplazamiento */
+}
+
+.list-books::-webkit-scrollbar-thumb {
+  background: var(--color-button); /* Color del pulgar de la barra de desplazamiento */
+}
+
+.list-books::-webkit-scrollbar-thumb:hover {
+  background: var(--color-header); /* Color del pulgar de la barra de desplazamiento al pasar el mouse */
+}
