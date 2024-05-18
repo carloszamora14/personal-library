@@ -7,8 +7,9 @@ router.get('/home', (req,res)=>{
   res.render('pages/home.ejs', {title:'Home'});
 })
 
-router.get('/allbooks', (req,res)=>{
-  res.render('pages/allbooks.ejs', {title:'All books'}); 
+router.get('/allbooks', async (req,res)=>{
+  const Books = await Book.find({});
+  res.render('pages/allbooks.ejs', {title:'All books', Books}); 
 })
 
 router.get('/gestionatebooks', async (req,res)=>{

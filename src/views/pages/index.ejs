@@ -16,26 +16,38 @@
       <img src="/public/assets/images/flower.png" alt="">
     </header>
 
-    <form class="form login-form">
+    <form class="form login-form" action="/login" method="POST">
       <div class="input-field">
         <label for="username">Username</label>
-        <input type="text" id="username" required placeholder="Ex. Fernando">
-        <span class="error-message" id="username-error"></span>
+        <input type="text" id="username" name="username" required placeholder="Ex. Fernando"
+          value="<%= userInput.username %>">
+        <span class="error-message" id="username-error">
+          <%= validationErrors.username %>
+        </span>
       </div>
 
       <div class="input-field">
         <label for="password">Password</label>
-        <input type="password" id="password" required>
-        <span class="error-message" id="password-error"></span>
+        <div class="input-container">
+          <input type="password" id="password" name="password" value="<%= userInput.password %>" required>
+          <button type="button" class="toggle-password" onclick="togglePassword(this)">
+            <img src="/public/assets/images/eye.png" alt="Show password">
+          </button>
+        </div>
+        <span class="error-message" id="password-error">
+          <%= validationErrors.password %>
+        </span>
       </div>
 
-      <span class="error-message" id="global-error"></span>
+      <span class="error-message" id="global-error">
+        <%= globalError %>
+      </span>
       <button type="submit" id="login">Log in</button>
       <a href="/signup">Do not have an account? Signup</a>
     </form>
   </main>
 
-  <script src="/public/js/login.js" type="module"></script>
+  <script src="/public/js/togglePassword.js"></script>
 </body>
 
 </html>
