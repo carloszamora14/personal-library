@@ -31,7 +31,8 @@ router.post('/signup', async (req, res) => {
   }
 
   try {
-    const userAlreadyExists = await User.findOne({ username: req.body.username });
+    const usernamePattern = new RegExp('^' + req.body.username + '$', 'i');
+    const userAlreadyExists = await User.findOne({ username: { $regex: usernamePattern } });
 
     if (userAlreadyExists) {
       return res.status(400).render(

@@ -100,7 +100,7 @@ describe('POST /signup', () => {
       expect(response.text).toContain('Username cannot be empty');
     });
 
-    it('should return 400 if request body has missing field', async () => {
+    it('should return 400 if request body has missing fields', async () => {
       const response = await request(app)
         .post('/signup')
         .type('form')
@@ -129,6 +129,69 @@ describe('POST /signup', () => {
       expect(response.text).toContain('Username cannot exceed 30 characters');
       expect(response.text).toContain('Email cannot exceed 255 characters');
       expect(response.text).toContain('Password cannot exceed 60 characters');
+    });
+  });
+
+  describe('Successful user signup', () => {
+    it('should create a new user and redirect to /login with status 302', async () => {
+      const response = await request(app)
+        .post('/signup')
+        .type('form')
+        .send({
+          username: 'carlos',
+          email: 'test@example.com',
+          password: 'Password123',
+          passwordConfirmation: 'Password123'
+        });
+
+      const redirectedUrl = response.header['location'];
+
+      expect(response.status).toBe(302);
+      expect(redirectedUrl).toMatch(/login/);
+    });
+  });
+
+  describe('User already exists', () => {
+    beforeEach(async () => {
+      const response = await request(app)
+        .post('/signup')
+        .type('form')
+        .send({
+          username: 'carlos',
+          email: 'test@example.com',
+          password: 'Password123',
+          passwordConfirmation: 'Password123'
+        });
+    });
+
+    it('should return 400 if exact username already exists', async () => {
+      const response = await request(app)
+        .post('/signup')
+        .type('form')
+        .send({
+          username: 'carlos',
+          email: 'existing@example.com',
+          password: 'aDifferentPassword123',
+          passwordConfirmation: 'aDifferentPassword123'
+        });
+
+      expect(response.status).toBe(400);
+      expect(response.text).toContain('Username is already registered');
+    });
+
+    it('should return 400 if username already exists regardless of case sensitivity', async () => {
+      const response = await request(app)
+        .post('/signup')
+        .type('form')
+        .send({
+          username: 'cArLos',
+          email: 'existing@example.com',
+          password: 'aDifferentPassword123',
+          passwordConfirmation: 'aDifferentPassword123'
+        });
+
+      expect(response.status).toBe(400);
+      expect(response.text).toContain('Username is already registered');
     });
   });
 });
