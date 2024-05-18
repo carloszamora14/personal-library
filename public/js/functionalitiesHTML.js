@@ -1,4 +1,3 @@
-
 // filtrado de libros por título y autor
 function filterBarInput(value) {
   var input, filter, table, tr, td, i, txtValue;
@@ -39,6 +38,7 @@ function filterBarInput(value) {
   }
 }
 
+// Definir la función para filtrar por título o autor
 function filterSelectInput() {
   var select = document.getElementById("filter-select");
   var value = select.value;
@@ -49,6 +49,7 @@ function filterSelectInput() {
   } 
 }
 
+// Funcion para mostrar en el navbar la pagina actual
 document.addEventListener('DOMContentLoaded', (event) => {
   var path = window.location.pathname.split("/").pop();
   if (path == "") path = "home";
@@ -68,3 +69,13 @@ btnUpdate.addEventListener("click", async ()=>{
   documet.getElementById('genre').value = Books[prop].genre;
   document.getElementById('status').value = Books[prop].status; 
 });  
+
+function visibilityform() {
+  var x = document.getElementsByClassName("gestionate-form");
+  console.log(x.style.display.toString());
+  if (x.style.display === "none") {
+    x.style.display = "";
+  } else {
+    x.style.display = "none";
+  }
+}
