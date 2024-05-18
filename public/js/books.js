@@ -1,3 +1,4 @@
+
 // filtrado de libros por título y autor
 function filterBarInput(value) {
   var input, filter, table, tr, td, i, txtValue;
@@ -55,3 +56,15 @@ document.addEventListener('DOMContentLoaded', (event) => {
   console.log("Target: ", target);
   target.classList.add('active');
 });
+
+//Editar libros
+const btnUpdate = document.getElementById('btnUpdate<%-index%>');
+console.log(btnUpdate)
+btnUpdate.addEventListener("click", async ()=>{
+  const bookId = btn.getAttribute('data-id');
+  const Books = await Book.findById(bookId);
+  document.getElementById('title').value = Books[prop].title;
+  document.getElementById('author').value = Books[prop].author;
+  documet.getElementById('genre').value = Books[prop].genre;
+  document.getElementById('status').value = Books[prop].status; 
+});  

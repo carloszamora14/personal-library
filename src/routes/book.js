@@ -17,6 +17,18 @@ router.get('/gestionatebooks', async (req,res)=>{
   res.render('pages/gestionatebooks.ejs', {title:'Gestionate books', Books})
 })
 
+router.get('/findBook/:id', async(req,res)=>{
+  try {
+    const Books = await Book.findById(req.params.id)
+    if(!Books){
+      return res.status(404).json({ error: 'Libro no encontrado' });
+    }
+  } catch (error) {
+    console.error('Error al obtener el libro:', error);
+  }
+  
+});
+
 router.post('/gestionatebooks', async (req, res) => {
   try {
     const newBook = new Book({
@@ -26,11 +38,14 @@ router.post('/gestionatebooks', async (req, res) => {
       status:req.body.status
     });
 
-    await newBook.save();  
-    res.render('pages/gestionatebooks.ejs');
+    await newBook.save(); 
+    const updatedBooks = await Book.find({});
+    res.render('pages/gestionatebooks.ejs', { title: 'Gestionate books', Books: updatedBooks });
   } catch (error) {
     res.status(500).send(error);
   }
 });
+
+
 
 module.exports = router;
