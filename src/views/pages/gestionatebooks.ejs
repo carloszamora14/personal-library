@@ -50,7 +50,29 @@
           <th>Status</th>
           <th>Actions</th>
         </tr>
-      <%});%>
-    </tbody>
+      </thead>
+      <tbody>
+        <% Object.keys(Books).forEach(function(prop) { %>
+          <tr>
+            <td>
+              <%= Books[prop].title %>
+            </td>
+            <td>
+              <%= Books[prop].author %>
+            </td>
+            <td>
+              <%= Books[prop].genre %>
+            </td>
+            <td>
+              <%= Books[prop].status %>
+            </td>
+            <td>
+              <!-- Combinación de ambos cambios o uno de ellos -->
+              <button>Edit</button>
+              <button>Delete</button>
+            </td>
+          </tr>
+          <%});%>
+      </tbody>
   </table>
 </div>
