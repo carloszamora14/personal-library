@@ -97,14 +97,14 @@ const getBookToUpdate = (bookId) =>{
   .catch(err => console.error(err));
 }
 
-const btnEdit = document.querySelectorAll("[id^='btnEdit']"); 
-btnEdit.forEach((btnEdit) => {
-  btnEdit.addEventListener("click", async () => {
+document.addEventListener('click', async (event) => {
+  if (event.target.classList.contains('btn-edit')) {
+    const btnEdit = event.target;
     const bookId = btnEdit.getAttribute("data-id");
     await getBookToUpdate(bookId);
     changeDisplay('none', 'inline-block');
     btnUpdate.setAttribute('data-id', bookId);
-  });
+  }
 });
 
 btnUpdate.addEventListener('click', async () => {
