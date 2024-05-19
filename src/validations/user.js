@@ -41,8 +41,10 @@ const usernameSchema = Joi.string()
 const emailSchema = Joi.string()
   .trim()
   .email({ minDomainSegments: 2, tlds: { allow: ['com', 'net', 'org', 'mx'] } })
+  .max(255)
   .messages({
     'string.empty': 'Email cannot be empty',
+    'string.max': 'Email cannot exceed 255 characters',
     'string.email': 'Invalid email format. The top-level domain must be one of "com", "net", "org" or "mx"'
   });
 

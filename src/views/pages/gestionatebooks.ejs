@@ -2,9 +2,9 @@
 
   <h3>Gestionate your books</h3>
 
-  <button>Add</button>
+  <button onclick="visibilityform()">Add</button>
 
-  <div class="gestionate-form">
+  <div class="gestionate-form" style="display: none;">
     <form action="/gestionatebooks" method="POST">
       <div class="form-input">
         <label for="title">Title</label>
@@ -36,7 +36,7 @@
       <div class="form-button">
         <input type="submit" value="Save" id="btnSave" class="btn-save">
         <input type="button" class="btn-update" id="btnUpdate" value="Update">
-        <input type="button" id="btnCancel" value="Cancel">
+        <input type="button" id="btnCancel" onclick="visibilityform()" value="Cancel">
       </div>
     </form>
   </div>

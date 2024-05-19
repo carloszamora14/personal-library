@@ -32,12 +32,13 @@ function filterBarInput(value) {
     notFound.id = "not-found";
     notFound.textContent = "No matching results found.";
     not.appendChild(notFound);
-    table.style.display = "none";
+    table.style.display = 'none';
   } else {
-    table.style.display = "";
+    table.style.display = '';
   }
 }
 
+// Definir la función para filtrar por título o autor
 function filterSelectInput() {
   var select = document.getElementById("filter-select");
   var value = select.value;
@@ -48,12 +49,26 @@ function filterSelectInput() {
   }
 }
 
-document.addEventListener("DOMContentLoaded", (event) => {
+// Funcion para mostrar en el navbar la pagina actual
+document.addEventListener('DOMContentLoaded', (event) => {
   var path = window.location.pathname.split("/").pop();
   if (path == "") path = "home";
-  var target = document.querySelector(".nav-link." + path);
-  target.classList.add("active");
+  var target = document.querySelector('.nav-link.' + path);
+  target.classList.add('active');
 });
+
+function visibilityform() {
+  var x = document.getElementsByClassName("gestionate-form")[0];
+  if (x.style.display === "none") {
+    x.style.display = "";
+  } else {
+    x.style.display = "none";
+    document.getElementById('title').value = "";
+    document.getElementById('author').value = "";
+    document.getElementById('genre').selectedIndex = 0;
+    document.getElementById('status').selectedIndex = 0;
+  }
+}
 
 //Editar libros
 const btnSave = document.getElementById('btnSave');
