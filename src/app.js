@@ -21,6 +21,7 @@ app.set('layout', 'layouts/mainLayout');
 app.use("/public", express.static(__dirname + "/../public"));
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
+app.use(express.json());
 
 // Rutas
 app.use(userRoutes);

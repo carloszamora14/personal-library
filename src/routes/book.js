@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const Book = require('../models/books')
 const expressLayouts = require('express-ejs-layouts');
+const books = require("../models/books");
 
 router.get('/home', (req,res)=>{
   res.render('pages/home.ejs', {title:'Home'});
@@ -17,18 +18,28 @@ router.get('/gestionatebooks', async (req,res)=>{
   res.render('pages/gestionatebooks.ejs', {title:'Gestionate books', Books})
 })
 
-router.get('/findBook/:id', async(req,res)=>{
+//Edit book
+router.get('/findbook/:id', async(req,res)=>{
   try {
-    const Books = await Book.findById(req.params.id)
-    if(!Books){
-      return res.status(404).json({ error: 'Libro no encontrado' });
-    }
+    const book = await Book.findById(req.params.id);
+    !book ? res.status(404).send('Book not found') : res.status(200).send(book);
+    
   } catch (error) {
-    console.error('Error al obtener el libro:', error);
+    res.status(500).send(error);
   }
-  
 });
 
+//Update book
+router.put('/updatebook/:id', async(req,res)=>{
+  try {
+    const book = await Book.findByIdAndUpdate (req.params.id, req.body, {new:true});
+    !book ? res.status(404).send('Book not found') : res.status(200).send(book); 
+  } catch (error) {
+    res.status(500).send(error);
+  }
+}); 
+
+//Add new book
 router.post('/gestionatebooks', async (req, res) => {
   try {
     const newBook = new Book({

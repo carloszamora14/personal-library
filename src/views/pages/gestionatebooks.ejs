@@ -34,7 +34,8 @@
         </select>
       </div>
       <div class="form-button">
-        <input type="submit" value="Save" class="button">
+        <input type="submit" value="Save" id="btnSave" class="btn-save">
+        <input type="button" class="btn-update" id="btnUpdate" value="Update">
         <input type="button" id="btnCancel" value="Cancel">
       </div>
     </form>
@@ -67,7 +68,7 @@
               <%- Books[prop].status %>
             </td>
             <td>
-              <button id="btnUpdate<%= index %>" data-id="<%- Books[prop]._id %>">Edit</button>
+              <button id="btnEdit<%= index %>" data-id="<%- Books[prop]._id %>">Edit</button>
               <button id="btnDelete">Delete</button>
             </td>
           </tr>

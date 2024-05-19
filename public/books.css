@@ -164,6 +164,11 @@ button:hover {
   color: var(--color-title);
 }
 
+/*add button - config display:none*/
+.btn-update {
+  display: none;
+}
+
 /* add form */
 
 .gestionate-form form{
