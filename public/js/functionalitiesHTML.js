@@ -59,7 +59,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
 function visibilityform() {
   var x = document.getElementsByClassName("gestionate-form")[0];
-  console.log(x.style.display.toString());
   if (x.style.display === "none") {
     x.style.display = "";
   } else {
