@@ -22,8 +22,10 @@ router.get('/gestionatebooks', async (req,res)=>{
 router.get('/findbook/:id', async(req,res)=>{
   try {
     const book = await Book.findById(req.params.id);
-    !book ? res.status(404).send('Book not found') : res.status(200).send(book);
-    
+    if (!book)
+      res.status(404).send('Book not found');
+    else 
+      res.status(200).send(book);
   } catch (error) {
     res.status(500).send(error);
   }
@@ -33,14 +35,17 @@ router.get('/findbook/:id', async(req,res)=>{
 router.put('/updatebook/:id', async(req,res)=>{
   try {
     const book = await Book.findByIdAndUpdate (req.params.id, req.body, {new:true});
-    !book ? res.status(404).send('Book not found') : res.status(200).send(book); 
+    if (!book)
+      res.status(404).send('Book not found');
+    else 
+      res.status(200).send('Book updated successfully');
   } catch (error) {
     res.status(500).send(error);
   }
 }); 
 
 //Add new book
-router.post('/gestionatebooks', async (req, res) => {
+router.post('/addbook', async (req, res) => {
   try {
     const newBook = new Book({
       title:req.body.title, 
@@ -56,6 +61,17 @@ router.post('/gestionatebooks', async (req, res) => {
   }
 });
 
-
+//Delete book
+router.get('/deletebook/:id', async(req,res)=>{
+  try {
+    const book = await Book.findByIdAndDelete(req.params.id);
+    if (!book)
+      res.status(404).send('Book not found');
+    else 
+      res.redirect('/gestionatebooks');
+  } catch (error) {
+    res.status(500).send(error);  
+  }
+});
 
 module.exports = router;
