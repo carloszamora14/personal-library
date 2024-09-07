@@ -12,10 +12,14 @@ Tiene un CRUD  básico  para la gestión de los materiales:
 - Eliminar registros.
 - Busqueda de material.
 
-### Funcionamiento 🧑‍💻
+### Funcionamiento 🚀
 
 1. Mantiene un servicio API REST mediante la tecnologia Express
 2. Hace uso de una base de datos no relacional, MongoDB. Utiliza el ORM mongoose para su manipulacion.
 3. Tiene una implementación de Login, con JWT para el tema de la seguridad.
 4. La interfaz fue realizada unicamente con CSS.
 
+### ROLES de trabajo 🧑‍💻
+- Cecilia. Interfaz de usuario, y endpoint de búsqueda. 
+- Carlos. Implementación del login con JWT. 
+- Ángeles. Manejo de base de datos, servicio de Express y endpoints para eliminar, editar y registrar. 
