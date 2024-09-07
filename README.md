@@ -4,7 +4,7 @@
 
 ### ¿Qué es? 🤔
 
-Personla Library es una aplicación web que permite llevar un control sobre el material de lectura de un usuario. 
+Personal Library es una aplicación web que permite llevar un control sobre el material de lectura de un usuario. 
 
 Tiene un CRUD  básico  para la gestión de los materiales: 
 - Ingresar nuevo material de lectura. 
