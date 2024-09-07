@@ -19,7 +19,7 @@ Tiene un CRUD  básico  para la gestión de los materiales:
 3. Tiene una implementación de Login, con JWT para el tema de la seguridad.
 4. La interfaz fue realizada unicamente con CSS.
 
-### ROLES de trabajo 🧑‍💻
+### Roles de trabajo 🧑‍💻
 - **Cecilia**. Interfaz de usuario, y endpoint de búsqueda. 
 - **Carlos**. Implementación del login con JWT. 
 - **Ángeles**. Manejo de base de datos, servicio de Express y endpoints para eliminar, editar y registrar. 
